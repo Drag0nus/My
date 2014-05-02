@@ -1,0 +1,38 @@
+
+public class Human {
+
+    private String name;
+    private int age;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
+    public static void main(String[] args) {
+        Human human = new Human();
+        
+    }
+    
+}
+
+public class Class1 extends Human{
+
+    Class1 () {
+        Class1 Pasha = new Class1();
+        Pasha.setAge(18);
+        int age = Pasha.getAge();
+    }
+    
+}
