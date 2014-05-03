@@ -1,0 +1,47 @@
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import javax.swing.JFrame;
+
+ public class Paint extends JFrame {
+
+             public Paint() {
+                  super("Paint");
+                  setSize(700, 700);
+                  setVisible(true);
+                  setDefaultCloseOperation(EXIT_ON_CLOSE);
+      }
+
+       @Override
+       public void paint(Graphics g) {
+           
+           Graphics2D gr2d = (Graphics2D) g;
+           gr2d.setBackground(Color.green);
+           
+           gr2d.drawLine(50, 400, 400, 400);
+           gr2d.drawLine(400, 400, 400, 50);
+           gr2d.drawLine(400, 50, 50, 50);
+           gr2d.drawLine(50, 50, 50, 400);
+                
+                
+
+                gr2d.setPaint(Color.BLACK);
+                Polygon j = new Polygon();
+                j.addPoint(300, 600);
+                j.addPoint(450, 600);
+                j.addPoint(400, 500);
+                j.addPoint(350, 500);
+
+
+                g.drawPolygon(j);
+
+                gr2d.setPaint(Color.BLACK);
+                gr2d.drawOval(300, 50, 300, 300);
+       }
+
+      public static void main(String args[]) {
+        Paint app = new Paint();
+      }
+}
