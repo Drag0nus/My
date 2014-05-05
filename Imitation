@@ -1,0 +1,195 @@
+
+public class App {
+
+    private String name, surname, favBand, zodiak;
+    private int age, salary, workDays, holidayDays, birthYear, deathYear;
+
+    public App(String name, String surname, String favBand, String zodiak, int age, int salary, int workDays, int holidayDays, int birthYear, int deathYear) {
+         this.name = name;
+         this.surname = surname;
+         this.zodiak = zodiak;
+         this.favBand = favBand;
+         this.age = age;
+         this.salary = salary;
+         this.workDays = workDays;
+         this.holidayDays = holidayDays;
+         this.birthYear = birthYear;
+         this.deathYear = deathYear;
+         
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getFavBand() {
+        return favBand;
+    }
+
+    public void setFavBand(String favBand) {
+        this.favBand = favBand;
+    }
+
+    public String getZodiak() {
+        return zodiak;
+    }
+
+    public void setZodiak(String zodiak) {
+        this.zodiak = zodiak;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public int getWorkDays() {
+        return workDays;
+    }
+
+    public void setWorkDays(int workDays) {
+        this.workDays = workDays;
+    }
+
+    public int getHolidayDays() {
+        return holidayDays;
+    }
+
+    public void setHolidayDays(int holidayDays) {
+        this.holidayDays = holidayDays;
+    }
+
+    public int getBirthYear() {
+        return birthYear;
+    }
+
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
+    }
+
+    public int getDeathYear() {
+        return deathYear;
+    }
+
+    public void setDeathYear(int deathYear) {
+        this.deathYear = deathYear;
+    }
+    
+     
+    
+    public static void main(String[] args) {
+         Kharuk kharuk = new Kharuk();
+         Galasse galasse = new Galasse();
+         
+         if (kharuk.getName().equals(galasse.getName())) {
+             System.out.println("Оба підори!");
+         } else {
+             System.out.println("Все рівно підори!");
+         }
+         
+         if (kharuk.getSurname().equals(galasse.getSurname()) ) {
+             System.out.println("Вони - брати, або однофамільці!");
+         } else {
+             System.out.println("Підори!");
+         }
+         
+         if (kharuk.getZodiak().equals(galasse.getZodiak())) {
+             System.out.println("Якщо обидва - раки, як же не пошутити про підорів D:");
+         } else {
+             System.out.println("Жаль :(");
+         }
+         
+         if (kharuk.getFavBand().equals(galasse.getFavBand())) {
+             System.out.println("Напевно, це якесь дерьмо!");
+         } else {
+             System.out.println("Все рівно дерьмо!");
+         }
+         
+         if (kharuk.getAge() < galasse.getAge()) {
+             System.out.println("Галас старший за Харука");
+         } else if (kharuk.getAge() > galasse.getAge()) {
+             System.out.println("Харук старший");
+         } else  {
+             System.out.println("Ровесники");
+         }
+         
+         if (kharuk.getSalary()< galasse.getSalary()) {
+             System.out.println("Галас заробляє більше");
+         } else if (kharuk.getSalary()> galasse.getSalary()) {
+             System.out.println("Харук заробляє більше");
+         } else  {
+             System.out.println("Напевно, обидва з BraZZers");
+         }
+        
+         if (kharuk.getWorkDays()< galasse.getWorkDays()) {
+             System.out.println("Галас працює довше");
+         } else if (kharuk.getWorkDays()> galasse.getWorkDays()) {
+             System.out.println("Харук працює довше");
+         } else  {
+             System.out.println("Напевно, обидва з BraZZers");
+         }
+         
+         if (kharuk.getHolidayDays()< galasse.getHolidayDays()) {
+             System.out.println("Галас відпочиває довше");
+         } else if (kharuk.getHolidayDays()> galasse.getHolidayDays()) {
+             System.out.println("Харук відпочиває довше");
+         } else  {
+             System.out.println("Напевно, обидва з BraZZers");
+         }
+         
+         if (kharuk.getBirthYear() < galasse.getBirthYear()) {
+             System.out.println("Ровесники!");
+         } else {
+             System.out.println("НЕ ровесники :3");
+         }
+         
+         if (kharuk.getDeathYear() < galasse.getDeathYear()) {
+             System.out.println("Харук помре раніше.");
+         } else if (kharuk.getDeathYear()> galasse.getDeathYear()) {
+             System.out.println("Галас помре раніше.");
+         } else  {
+             System.out.println("Awwwww, вони помруть в один рік. Як це милоо! :3");
+         }
+    }
+    
+}
+
+
+public class Kharuk extends App{
+
+    public Kharuk() {
+        super("SerGAY", "Kharuk", "Justin Bieber", "Cancer", 18, 50, 5, 2, 1995, 2059);
+    }
+}
+
+
+public class Galasse extends App{
+
+    public Galasse() {
+        super("SerGAY", "Galasse", "Muse", "Cancer", 18, 200, 4, 3, 1995, 2060);
+    }
+    
+}
