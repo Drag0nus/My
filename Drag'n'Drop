@@ -1,0 +1,146 @@
+
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Panel;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
+import java.awt.dnd.DnDConstants;
+import java.awt.dnd.DragGestureEvent;
+import java.awt.dnd.DragGestureListener;
+import java.awt.dnd.DragSource;
+import java.awt.dnd.DragSourceDragEvent;
+import java.awt.dnd.DragSourceDropEvent;
+import java.awt.dnd.DragSourceEvent;
+import java.awt.dnd.DragSourceListener;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDragEvent;
+import java.awt.dnd.DropTargetDropEvent;
+import java.awt.dnd.DropTargetEvent;
+import java.awt.dnd.DropTargetListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+
+public class BasicDnD extends Frame {
+    TestPanel testPanel = null;
+    TestButton testButton = null;
+ 
+ public BasicDnD() {
+	
+	testPanel = new TestPanel();
+        final JFrame form = new JFrame("Button");
+        final JButton button1 = new JButton("Add");
+        final JButton button2 = new JButton("Delete");
+	testPanel.setSize(600,800);
+	testPanel.setBackground(Color.LIGHT_GRAY);
+	testButton = new TestButton("TestButton");
+	testPanel.add(testButton);
+	add(testPanel);
+	show();
+          form.setVisible(true);
+          form.setSize(600, 800);
+
+        button1.addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //JRadioButton b = new JRadioButton();
+            testPanel.add(testButton);
+            testPanel.validate();
+        }
+    });
+        button2.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent f) {
+            testPanel.remove(testButton);
+            testPanel.revalidate();
+            }
+        });
+
+    testPanel.add(button1);
+    testPanel.add(button2);
+    form.add(testPanel);
+        
+ }
+    public static void main(String args[]) {
+        BasicDnD basicDnD = new BasicDnD();
+        
+    }
+}
+
+    class TestPanel extends Panel implements DropTargetListener {
+        DropTarget dt;
+        
+ 
+    public TestPanel() {
+	dt = new DropTarget(this, DnDConstants
+		 .ACTION_COPY_OR_MOVE, this);
+    }
+        @Override
+    public void dragEnter(DropTargetDragEvent arg0) {
+    }
+
+        @Override
+    public void dragExit(DropTargetEvent arg0) {
+    }
+
+        @Override
+     public void dragOver(DropTargetDragEvent arg0) {
+        Constant.x = arg0.getLocation().x;
+        Constant.y = arg0.getLocation().y;
+    }
+
+        @Override
+    public void drop(DropTargetDropEvent arg0) {
+    }
+
+        @Override
+    public void dropActionChanged(DropTargetDragEvent arg0) {
+    }
+}
+
+
+    class TestButton extends Button implements DragSourceListener,
+        DragGestureListener {
+        DragSource ds = DragSource.getDefaultDragSource();
+    
+    public TestButton(String label) {
+	super(label);
+	ds.createDefaultDragGestureRecognizer(this,
+		 DnDConstants.ACTION_COPY_OR_MOVE, this);
+        }
+        
+        @Override
+    public void dragGestureRecognized(DragGestureEvent arg0) {
+            Transferable t = new StringSelection(getLabel());
+            arg0.startDrag(DragSource.DefaultMoveDrop, t, this);
+        }
+        @Override
+    public void dragDropEnd(DragSourceDropEvent arg0) {
+        }
+
+        @Override
+    public void dragEnter(DragSourceDragEvent arg0) {
+        }
+
+        @Override
+    public void dragExit(DragSourceEvent arg0) {
+         }
+
+        @Override
+    public void dragOver(DragSourceDragEvent arg0) {
+                arg0.getDragSourceContext().getComponent()
+                     .setLocation(Constant.x, Constant.y);
+        }
+
+        @Override
+    public void dropActionChanged(DragSourceDragEvent arg0) {
+    }
+}
+    class Constant {
+        public static int x;
+        public static int y;
+}
