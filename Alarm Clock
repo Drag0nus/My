@@ -1,0 +1,59 @@
+
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+public class AlarmClock {
+
+    
+    public static void main(String[] args) throws IOException {
+       DateFormat dateF = new SimpleDateFormat("HH:mm:ss");
+       
+       Scanner scan = new Scanner(System.in);
+       String a = scan.nextLine();
+       Date date = new Date();
+       String time = dateF.format(date); 
+       System.out.println(time);
+       
+       String[] x = time.split(":");
+        
+       String h = x[0];
+       String m = x[1];
+       String s = x[2];
+       
+       String[] y = a.split(":");
+       
+       String Ah = y[0];
+       String Am = y[1];
+       String As = y[2];
+       
+       int hI = Integer.parseInt(h);
+       int mI = Integer.parseInt(m);
+       int sI = Integer.parseInt(s);
+       
+       int ahI = Integer.parseInt(Ah);
+       int amI = Integer.parseInt(Am);
+       int asI = Integer.parseInt(As);
+       
+       int timeI = hI * 3600 + mI * 60 + sI;
+       int alarmTime = ahI * 3600 + amI * 60 + asI;
+       
+       if(alarmTime < timeI) {
+           alarmTime = alarmTime + 24 * 3600;          
+       }
+        try {
+            Thread.sleep((alarmTime - timeI) * 1000);
+            
+        } catch (InterruptedException ex) {
+            Logger.getLogger(AlarmClock.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Вставай, уеба!");
+      
+    }
+    
+}
